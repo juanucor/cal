@@ -1,0 +1,210 @@
+[33mcommit f15b559ab4a85c112810c0a36ada4873749b6127[m
+Author: Juan Miguel Nuñez <juanucor@gmail.com>
+Date:   Mon Feb 5 23:23:01 2018 +0100
+
+    calculadora jquery
+
+[1mdiff --git a/calcu-jquery.html b/calcu-jquery.html[m
+[1mnew file mode 100644[m
+[1mindex 0000000..5093f2d[m
+[1m--- /dev/null[m
+[1m+++ b/calcu-jquery.html[m
+[36m@@ -0,0 +1,197 @@[m
+[32m+[m[32m<!DOCTYPE html><html>[m[41m[m
+[32m+[m[32m<head>[m[41m[m
+[32m+[m[32m  <title>Cálculadora JQuery</title>[m[41m[m
+[32m+[m[32m  <meta charset="UTF-8">[m[41m[m
+[32m+[m[41m    [m
+[32m+[m[32m    <style type="text/css">[m[41m[m
+[32m+[m[41m        [m
+[32m+[m[32m        body {[m[41m[m
+[32m+[m[32m            background-color:beige;[m[41m[m
+[32m+[m[32m        }[m[41m[m
+[32m+[m[41m        [m
+[32m+[m[32m        #marco {[m[41m[m
+[32m+[m[32m            background-color:blanchedalmond;[m[41m[m
+[32m+[m[41m            [m
+[32m+[m[32m            padding: 0.5em;[m[41m[m
+[32m+[m[32m            margin: 20px;[m[41m[m
+[32m+[m[32m            width: 260px;[m[41m [m
+[32m+[m[32m            border-style: groove;[m[41m[m
+[32m+[m[32m            border-width: 10px;[m[41m[m
+[32m+[m[32m        }[m[41m[m
+[32m+[m[41m        [m
+[32m+[m[32m        #calculadora {[m[41m[m
+[32m+[m[32m            background-color:burlywood;[m[41m[m
+[32m+[m[32m            box-shadow: 2px 7px 5px gray;[m[41m[m
+[32m+[m[32m            padding: 0.5em;[m[41m[m
+[32m+[m[32m            margin: 20px;[m[41m[m
+[32m+[m[32m            width: 200px;[m[41m[m
+[32m+[m[32m        }[m[41m[m
+[32m+[m[41m    [m
+[32m+[m[32m    </style>[m[41m[m
+[32m+[m[41m    [m
+[32m+[m[32m    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"> </script>[m[41m[m
+[32m+[m[41m    [m
+[32m+[m[41m[m
+[32m+[m[41m    [m
+[32m+[m[32m    <script type="text/javascript">[m[41m[m
+[32m+[m[41m        [m
+[32m+[m[32m        $(function() {[m[41m [m
+[32m+[m[32m            var acc=0, op="";[m[41m[m
+[32m+[m[41m            [m
+[32m+[m[32m        $("#n1").on("click", function(){ $("#n1").val("");} );[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32m        $("#cuadrado").on("click", function() {[m[41m [m
+[32m+[m[32m            var num = $("#n1");[m[41m[m
+[32m+[m[32m            num.val(num.val() * num.val());[m[41m[m
+[32m+[m[32m            }[m[41m[m
+[32m+[m[32m            );[m[41m[m
+[32m+[m[41m        [m
+[32m+[m[41m        [m
+[32m+[m[32m        $("#inverso").on("click", function() {[m[41m [m
+[32m+[m[32m            var num = $("#n1");[m[41m[m
+[32m+[m[32m            num.val(1 / num.val());[m[41m[m
+[32m+[m[32m            }[m[41m[m
+[32m+[m[32m            );[m[41m[m
+[32m+[m[41m            [m
+[32m+[m[32m        $("#raiz").on("click", function() {[m[41m [m
+[32m+[m[32m            var num = $("#n1");[m[41m[m
+[32m+[m[32m            num.val(Math.sqrt(num.val()));[m[41m[m
+[32m+[m[32m            }[m[41m[m
+[32m+[m[32m            );[m[41m[m
+[32m+[m[41m        [m
+[32m+[m[41m         [m
+[32m+[m[32m        $("#entera").on("click", function() {[m[41m [m
+[32m+[m[32m            var num = $("#n1");[m[41m[m
+[32m+[m[32m            if ( +num.value < 0) {[m[41m[m
+[32m+[m[32m                num.val(Math.ceil(num.val()));[m[41m[m
+[32m+[m[32m            }[m[41m[m
+[32m+[m[32m            else {[m[41m[m
+[32m+[m[32m                num.val(Math.floor(num.val()));[m[41m[m
+[32m+[m[32m            }[m[41m[m
+[32m+[m[32m            }[m[41m[m
+[32m+[m[32m            );[m[41m[m
+[32m+[m[41m            [m
+[32m+[m[41m            [m
+[32m+[m[32m        $("#potbin").on("click", function() {[m[41m [m
+[32m+[m[32m            var num = $("#n1");[m[41m[m
+[32m+[m[32m            num.val(Math.pow(2,+num.val()));[m[41m[m
+[32m+[m[32m            }[m[41m[m
+[32m+[m[32m            );[m[41m[m
+[32m+[m[41m        [m
+[32m+[m[32m        $("#factorial").on("click", function() {[m[41m [m
+[32m+[m[32m            var num = $("#n1");[m[41m[m
+[32m+[m[32m            var n=0;[m[41m[m
+[32m+[m[32m            var acu=1;[m[41m[m
+[32m+[m[32m            n=num.val();[m[41m[m
+[32m+[m[32m            while (n !== 0) {[m[41m[m
+[32m+[m[32m                acu=acu*n;[m[41m[m
+[32m+[m[32m                n=n-1;[m[41m[m
+[32m+[m[32m            }[m[41m[m
+[32m+[m[32m            num.val(acu);[m[41m[m
+[32m+[m[32m            }[m[41m[m
+[32m+[m[32m            );[m[41m[m
+[32m+[m[41m            [m
+[32m+[m[32m        $("#sumatorio").on("click", function() {[m[41m [m
+[32m+[m[32m            var num = $("#n1");[m[41m[m
+[32m+[m[32m            var lista = num.val().split(",");[m[41m[m
+[32m+[m[32m            for (var i=0, acc=0; i<lista.length; i++) acc += +lista[i];[m[41m[m
+[32m+[m[32m            num.val(acc);[m[41m[m
+[32m+[m[32m            }[m[41m[m
+[32m+[m[32m            );[m[41m[m
+[32m+[m[41m            [m
+[32m+[m[41m            [m
+[32m+[m[32m        $("#productorio").on("click", function() {[m[41m [m
+[32m+[m[32m            var num = $("#n1");[m[41m[m
+[32m+[m[32m            var lista = num.val().split(",");[m[41m[m
+[32m+[m[32m            for (var i=0, acc=1; i<lista.length; i++) acc *= +lista[i];[m[41m[m
+[32m+[m[32m            num.val(acc);[m[41m[m
+[32m+[m[32m            }[m[41m[m
+[32m+[m[32m            );[m[41m[m
+[32m+[m[41m            [m
+[32m+[m[41m            [m
+[32m+[m[32m        $("#suma").on("click", function() {[m[41m [m
+[32m+[m[32m            var num = $("#n1");[m[41m[m
+[32m+[m[32m            op = "+";[m[41m[m
+[32m+[m[32m            acc = num.val();[m[41m[m
+[32m+[m[32m            }[m[41m[m
+[32m+[m[32m            );[m[41m[m
+[32m+[m[41m            [m
+[32m+[m[32m        $("#menos").on("click", function() {[m[41m [m
+[32m+[m[32m            var num = $("#n1");[m[41m[m
+[32m+[m[32m            op = "-";[m[41m[m
+[32m+[m[32m            acc = num.val();[m[41m[m
+[32m+[m[32m            }[m[41m[m
+[32m+[m[32m            );[m[41m[m
+[32m+[m[41m            [m
+[32m+[m[32m        $("#producto").on("click", function() {[m[41m [m
+[32m+[m[32m            var num = $("#n1");[m[41m[m
+[32m+[m[32m            op = "*";[m[41m[m
+[32m+[m[32m            acc = num.val();[m[41m[m
+[32m+[m[32m            }[m[41m[m
+[32m+[m[32m            );[m[41m[m
+[32m+[m[41m            [m
+[32m+[m[32m        $("#division").on("click", function() {[m[41m [m
+[32m+[m[32m            var num = $("#n1");[m[41m[m
+[32m+[m[32m            op = "/";[m[41m[m
+[32m+[m[32m            acc = num.val();[m[41m[m
+[32m+[m[32m            }[m[41m[m
+[32m+[m[32m            );[m[41m[m
+[32m+[m[41m            [m
+[32m+[m[32m        $("#potencia").on("click", function() {[m[41m [m
+[32m+[m[32m            var num = $("#n1");[m[41m[m
+[32m+[m[32m            op = "pot";[m[41m[m
+[32m+[m[32m            acc = num.val();[m[41m[m
+[32m+[m[32m            }[m[41m[m
+[32m+[m[32m            );[m[41m[m
+[32m+[m[41m            [m
+[32m+[m[41m            [m
+[32m+[m[32m         $("#calcular").on("click", function() {[m[41m [m
+[32m+[m[32m            var num = $("#n1");[m[41m[m
+[32m+[m[32m            if (op === "+") {num.val(+acc + +num.val());}[m[41m[m
+[32m+[m[32m            if (op === "-") {num.val(+acc - +num.val());}[m[41m[m
+[32m+[m[32m            if (op === "*") {num.val(+acc * +num.val());}[m[41m[m
+[32m+[m[32m            if (op === "/") {num.val(+acc / +num.val());}[m[41m[m
+[32m+[m[32m            if (op === "pot") {num.val(Math.pow(+acc,+num.val()));}[m[41m[m
+[32m+[m[32m            }[m[41m[m
+[32m+[m[32m            );[m[41m[m
+[32m+[m[41m            [m
+[32m+[m[41m        [m
+[32m+[m[32m         });[m[41m[m
+[32m+[m[41m        [m
+[32m+[m[41m  [m
+[32m+[m[41m[m
+[32m+[m[41m       [m
+[32m+[m[41m  [m
+[32m+[m[32m    </script>[m[41m[m
+[32m+[m[32m</head>[m[41m[m
+[32m+[m[32m<body>[m[41m[m
+[32m+[m[32m  <h2>Buenos días, bienvenido a la cálculadora de Juan Miguel Núñez</h2>[m[41m[m
+[32m+[m[32m  <p>[m[41m[m
+[32m+[m[32m<div id="marco">[m[41m[m
+[32m+[m[32m  <div id="calculadora">[m[41m[m
+[32m+[m[32m    <p>[m[41m[m
+[32m+[m[32m    <input type="text" id="n1">[m[41m[m
+[32m+[m[32m      <p>[m[41m[m
+[32m+[m[32m    <button id="cuadrado">x<sup>2</sup></button>[m[41m[m
+[32m+[m[32m    <button id="inverso">1/x</button>[m[41m[m
+[32m+[m[32m    <button id="raiz">raiz</button>[m[41m[m
+[32m+[m[32m    <button id="entera">entera</button>[m[41m[m
+[32m+[m[32m     <p>[m[41m[m
+[32m+[m[32m    <button id="suma">+</button>[m[41m[m
+[32m+[m[32m    <button id="menos">-</button>[m[41m[m
+[32m+[m[32m    <button id="producto">*</button>[m[41m[m
+[32m+[m[32m    <button id="division">/</button>[m[41m[m
+[32m+[m[32m    <button id="potencia">x<sup>y</sup></button>[m[41m[m
+[32m+[m[32m    <button id="potbin">2<sup>n</sup></button>[m[41m[m
+[32m+[m[32m    <p>[m[41m[m
+[32m+[m[32m    <button id="factorial">n!</button>[m[41m[m
+[32m+[m[32m    <button id="sumatorio">Σ x</button>[m[41m[m
+[32m+[m[32m    <button id="productorio">* x</button>[m[41m[m
+[32m+[m[32m    <p>[m[41m[m
+[32m+[m[32m    <button id="calcular">calcular</button>[m[41m[m
+[32m+[m[32m    <p>[m[41m[m
+[32m+[m[32m  </div>[m[41m[m
+[32m+[m[32m</div>[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32m</body>[m[41m[m
+[32m+[m[32m</html>[m
+\ No newline at end of file[m
